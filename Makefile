@@ -5,7 +5,7 @@ CFLAGS += -std=c11 -Wall -Wextra -Werror -g -fsanitize=address,undefined
 LDFLAGS += -fsanitize=address,undefined
 
 BUILD_DIR := build
-SOURCES := src/arena.c src/bump.c src/mm.c
+SOURCES := src/arena.c src/bump.c src/freelist.c src/mm.c
 OBJECTS := $(SOURCES:src/%.c=$(BUILD_DIR)/%.o)
 LIBRARY := $(BUILD_DIR)/libslabforge.a
 TEST := $(BUILD_DIR)/test_basic

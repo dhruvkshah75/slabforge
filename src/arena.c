@@ -19,5 +19,23 @@ arena_t *arena_init(void)
     arena->next = (unsigned char *)mapping + metadata_size;
     arena->end = (unsigned char *)mapping + ARENA_SIZE;
 
+    /* The first free block uses the remaining arena space. Round down
+     * so its total size is a multiple of 16.
+     */
+    size_t available = (size_t)(arena->end - arena->next);
+    size_t block_size = (available) / MM_ALIGNMENT * MM_ALIGNMENT;
+
+    /* This makes arena->end mark the end of the usable block region. */
+    arena->end = arena->next + block_size;
+
+    /* place the block header at the start of the usable region. */
+    block_header_t *block = (block_header_t *)arena->next;
+    block->size = block_size;
+    block->allocated = 0;
+    
+    /* create the footer which stores the block size of this block. */
+    size_t *footer = (size_t *)(arena->next + block_size - BLOCK_FOOTER_SIZE);
+    *footer = block_size;
+
     return arena;
 }

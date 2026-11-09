@@ -14,7 +14,7 @@ void *my_malloc(size_t size)
         if(arena == NULL) return NULL;
     }
 
-    return bump_alloc(arena, size);
+     return freelist_alloc(arena, size);
 }
 
 void my_free(void *ptr)

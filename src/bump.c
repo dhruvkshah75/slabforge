@@ -1,6 +1,7 @@
 #include "mm_internal.h"
 #include <stdint.h>  /* SIZE_MAX */
 
+/* Allocate size bytes from the arena. Return NULL on failure. */
 void *bump_alloc(arena_t *arena, size_t size) 
 {   
     /* Our chosen behavior: a zero-byte request returns NULL. */
