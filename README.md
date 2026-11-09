@@ -1,4 +1,4 @@
-# Slabforge
+# slabforge
 
 Slabforge is an educational memory allocator written in C11. The project builds toward `my_malloc`, `my_free`, `my_realloc`, and `my_calloc` with libc-compatible semantics, using an `mmap`-backed arena rather than calling libc's allocation functions inside the allocator. It is designed to be built and tested one phase at a time.
 

@@ -11,7 +11,6 @@ void *my_malloc(size_t size)
     /* create the arena only when it is needed. */
     if(arena == NULL) {
         arena = arena_init();
-        
         if(arena == NULL) return NULL;
     }
 
