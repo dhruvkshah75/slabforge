@@ -12,3 +12,7 @@ Slabforge is an educational memory allocator written in C11. The project builds 
 
 The final dispatcher will route requests to the appropriate backend. A heap checker will validate allocator invariants from phase 2 onward, including the consistency of free blocks and coalescing. The exact boundaries between backends will be chosen during implementation.
 
+## Tests
+
+Run `make test` from the project root. See the [test guide](test/README.md) for suite selection, direct runner usage, and build requirements.
+
